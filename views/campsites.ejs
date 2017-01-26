@@ -1,14 +1,27 @@
 <% include partials/header %>
 
-<h1>This is the Camp Sites page</h1>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to Camp Champ</h1>
+            <p>View collection of exotic camp sites from all over the world</p>
+            <a class="btn btn-primary btn-large" href="/campsites/new">Add new Camp Sites</a>
+        </div>
+    </header>
 
-<a href="/campsites/new">Add new Camp Sites</a>
-
-<% campsites.forEach(function(site) { %>
-    <div>
-        <h3><%= site.name %></h3>
-        <img src="<%= site.image %>" alt="camp site image" />
+    <div class="row text-center" style="display:flex; flex-wrap:wrap">
+        <% campsites.forEach(function(site) { %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= site.image %>" alt="camp site image" />
+                    <div class="caption">
+                        <h3><%= site.name %></h3>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
     </div>
-<% }); %>
+
+</div>
 
 <% include partials/footer %>

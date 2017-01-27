@@ -58,7 +58,15 @@ app.get('/campsites/new', function(req, res) {
 
 // Show info about the selected campsite
 app.get('/campsites/:id', function(req, res) {
-    res.send('Campsite info page');
+    // find the campsite with provided id
+    Campsite.findById(req.params.id, function(err, foundCampsite) {
+        if(err) {
+            console.log(err);
+        } else {
+            // render show template with that campsite
+            res.render('show', {campsite: foundCampsite});
+        }
+    });
 });
 
 // Serves on port 3000

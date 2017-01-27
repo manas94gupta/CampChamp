@@ -5,12 +5,12 @@ var express = require('express'),
     Campsite = require('./models/campsite');
     seedDB = require('./seeds');
 
-seedDB();
-
 mongoose.connect('mongodb://localhost/camp_champ');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+
+seedDB();
 
 // landing page route
 app.get('/', function(req, res) {
@@ -55,7 +55,7 @@ app.get('/campsites/new', function(req, res) {
 // Show info about the selected campsite
 app.get('/campsites/:id', function(req, res) {
     // find the campsite with provided id
-    Campsite.findById(req.params.id, function(err, foundCampsite) {
+    Campsite.findById(req.params.id).populate('comments').exec(function(err, foundCampsite) {
         if(err) {
             console.log(err);
         } else {

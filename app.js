@@ -1,21 +1,13 @@
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    Campsite = require('./models/campsite');
 
 mongoose.connect('mongodb://localhost/camp_champ');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-
-// campsite schema setup
-var campsiteSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-var Campsite = mongoose.model('Campsite', campsiteSchema);
 
 // landing page route
 app.get('/', function(req, res) {

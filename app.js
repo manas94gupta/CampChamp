@@ -24,7 +24,7 @@ app.get('/campsites', function(req, res) {
         if(err) {
             console.log(err);
         } else {
-            res.render('campsites', {campsites: allCampsites});
+            res.render('campsites/campsites', {campsites: allCampsites});
         }
     });
 });
@@ -49,7 +49,7 @@ app.post('/campsites', function(req, res) {
 
 // Add new campsites route
 app.get('/campsites/new', function(req, res) {
-    res.render('addcamp');
+    res.render('campsites/addcamp');
 });
 
 // Show info about the selected campsite
@@ -60,7 +60,7 @@ app.get('/campsites/:id', function(req, res) {
             console.log(err);
         } else {
             // render show template with that campsite
-            res.render('show', {campsite: foundCampsite});
+            res.render('campsites/show', {campsite: foundCampsite});
         }
     });
 });

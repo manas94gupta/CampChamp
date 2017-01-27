@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    Campsite = require('./models/campsite');
+    Campsite = require('./models/campsite'),
+    Comment = require('./models/comment');
 
 // seed data for testing
 var seedData = [
@@ -27,12 +28,26 @@ function seedDB() {
             console.log(err);
         }
         console.log('All Camp Sites removed');
+        // create and add campsites to db for each seed data
         seedData.forEach(function(seed) {
-            Campsite.create(seed, function(err, data) {
+            Campsite.create(seed, function(err, campsite) {
                 if(err) {
                     console.log(err);
                 } else {
                     console.log('New Camp Site added');
+                    // add a comment to each campsite
+                    Comment.create({
+                        text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui.',
+                        author: 'Lorem'
+                    }, function(err, comment) {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            campsite.comments.push(comment);
+                            campsite.save();
+                            console.log('Comment added');
+                        }
+                    });
                 }
             });
         });

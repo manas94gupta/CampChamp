@@ -3,6 +3,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Campsite = require('./models/campsite');
+    Comment = require('./models/comment');
     seedDB = require('./seeds');
 
 mongoose.connect('mongodb://localhost/camp_champ');
@@ -73,6 +74,26 @@ app.get('/campsites/:id/comments/new', function(req, res) {
             console.log(err);
         } else {
             res.render('comments/addcomment', {campsite: campsite});
+        }
+    });
+});
+
+// post request to add comment
+app.post('/campsites/:id/comments', function(req, res) {
+    // find camp site by id
+    Campsite.findById(req.params.id, function(err, campsite) {
+        if(err) {
+            console.log(err);
+        } else {
+            Comment.create(req.body.comment, function(err, comment) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    campsite.comments.push(comment);
+                    campsite.save();
+                    res.redirect('/campsites/' + campsite._id);
+                }
+            });
         }
     });
 });

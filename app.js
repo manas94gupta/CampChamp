@@ -39,9 +39,15 @@ app.post('/campsites', function(req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var newCampsite = {name: name, image: image};
-    campsites.push(newCampsite);
-    // redirect to /campsites route
-    res.redirect('/campsites');
+    // create new campsite and to database
+    Campsite.create(newCampsite, function(err, campsite) {
+        if(err) {
+            console.log(err);
+        } else {
+            // redirect to /campsites route
+            res.redirect('/campsites');
+        }
+    });
 });
 
 // Add new campsites route

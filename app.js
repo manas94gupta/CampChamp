@@ -39,7 +39,8 @@ app.post('/campsites', function(req, res) {
     // get form data
     var name = req.body.name;
     var image = req.body.image;
-    var newCampsite = {name: name, image: image};
+    var desc = req.body.description;
+    var newCampsite = {name: name, image: image, description: desc};
     // create new campsite and to database
     Campsite.create(newCampsite, function(err, campsite) {
         if(err) {

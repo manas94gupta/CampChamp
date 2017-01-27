@@ -3,6 +3,9 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Campsite = require('./models/campsite');
+    seedDB = require('./seeds');
+
+seedDB();
 
 mongoose.connect('mongodb://localhost/camp_champ');
 

@@ -7,17 +7,17 @@ var seedData = [
     {
         name: 'Barren Lands',
         image: 'https://c1.staticflickr.com/6/5204/5315979822_3591b6509f_b.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
     },
     {
         name: 'Desert Mesa',
         image: 'https://c1.staticflickr.com/3/2512/5733464781_8787e851b0_b.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
     },
     {
         name: 'Forest Retreat',
         image: 'https://c1.staticflickr.com/7/6188/6054388099_b8e2f57146_b.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
     }
 ];
 
@@ -38,7 +38,7 @@ function seedDB() {
                     // add a comment to each campsite
                     Comment.create({
                         text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui.',
-                        author: 'Lorem'
+                        author: 'John Doe'
                     }, function(err, comment) {
                         if(err) {
                             console.log(err);

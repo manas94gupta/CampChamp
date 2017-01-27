@@ -1,9 +1,20 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+var express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/camp_champ');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+
+// campsite schema setup
+var campsiteSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+var Campsite = mongoose.model('Campsite', campsiteSchema);
 
 // Hard coded array with some campsites for testing
 var campsites = [

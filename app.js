@@ -16,14 +16,6 @@ var campsiteSchema = new mongoose.Schema({
 
 var Campsite = mongoose.model('Campsite', campsiteSchema);
 
-// Hard coded array with some campsites for testing
-var campsites = [
-    {name: 'Barrens', image: 'https://c1.staticflickr.com/6/5204/5315979822_3591b6509f_b.jpg'},
-    {name: 'Desert', image: 'https://c1.staticflickr.com/3/2512/5733464781_8787e851b0_b.jpg'},
-    {name: 'Forest', image: 'https://c1.staticflickr.com/7/6188/6054388099_b8e2f57146_b.jpg'},
-    {name: 'Riverside', image: 'https://c1.staticflickr.com/3/2540/3839041026_01a3941ffa_b.jpg'}
-];
-
 // landing page route
 app.get('/', function(req, res) {
     res.render('index');
@@ -31,7 +23,14 @@ app.get('/', function(req, res) {
 
 // campsites route which displays all the campsites
 app.get('/campsites', function(req, res) {
-    res.render('campsites', {campsites: campsites});
+    // get all campsites from the database
+    Campsite.find({}, function(err, allCampsites) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render('campsites', {campsites: allCampsites});
+        }
+    });
 });
 
 // post request to add new campsites

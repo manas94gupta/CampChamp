@@ -11,7 +11,8 @@ app.set('view engine', 'ejs');
 // campsite schema setup
 var campsiteSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 var Campsite = mongoose.model('Campsite', campsiteSchema);
@@ -53,6 +54,11 @@ app.post('/campsites', function(req, res) {
 // Add new campsites route
 app.get('/campsites/new', function(req, res) {
     res.render('addcamp');
+});
+
+// Show info about the selected campsite
+app.get('/campsites/:id', function(req, res) {
+    res.send('Campsite info page');
 });
 
 // Serves on port 3000

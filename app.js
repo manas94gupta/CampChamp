@@ -65,6 +65,18 @@ app.get('/campsites/:id', function(req, res) {
     });
 });
 
+//  Add new comments to a campsite
+app.get('/campsites/:id/comments/new', function(req, res) {
+    // find camp site by id
+    Campsite.findById(req.params.id, function(err, campsite) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render('comments/addcomment', {campsite: campsite});
+        }
+    });
+});
+
 // Serves on port 3000
 app.listen('3000', function() {
     console.log('Camp Champ serving on port 3000');

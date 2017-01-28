@@ -6,8 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/manas94gupta/CampChamp.git"
+  },
   "author": "Manas Gupta",
   "license": "MIT",
+  "bugs": {
+      "url": "https://github.com/manas94gupta/CampChamp/issues"
+  },
   "dependencies": {
     "body-parser": "^1.16.0",
     "connect-flash": "^0.1.1",

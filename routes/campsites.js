@@ -54,6 +54,18 @@ router.get('/campsites/:id', function(req, res) {
     });
 });
 
+// edit camp site route
+router.get('/campsites/:id/edit', function(req, res) {
+    Campsite.findById(req.params.id, function(err, foundCampsite) {
+        if(err) {
+            console.log(err);
+            res.redirect('/campsites');
+        } else {
+            res.render('campsites/edit', {campsite: foundCampsite});
+        }
+    });
+});
+
 // check if user is logged in
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {

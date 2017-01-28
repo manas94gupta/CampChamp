@@ -5,11 +5,13 @@ var express = require('express'),
     passport = require('passport'),
     localPassport = require('passport-local'),
     expressSession = require('express-session'),
+    methodOverride = require('method-override'),
     Campsite = require('./models/campsite'),
     Comment = require('./models/comment'),
     User = require('./models/user'),
     seedDB = require('./seeds');
 
+// require all routes
 var indexRoutes = require('./routes/index'),
     campsiteRoutes = require('./routes/campsites'),
     commentRoutes = require('./routes/comments');
@@ -20,7 +22,10 @@ mongoose.connect('mongodb://localhost/camp_champ');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
-seedDB();
+app.use(methodOverride('_method'));
+
+// add seed data
+// seedDB();
 
 // Authentication and passport configuration
 app.use(expressSession({

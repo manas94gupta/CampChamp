@@ -34,10 +34,22 @@ router.post('/campsites/:id/comments', isLoggedIn, function(req, res) {
                     // add comment to the campsite
                     campsite.comments.push(comment);
                     campsite.save();
-                    
+
                     res.redirect('/campsites/' + campsite._id);
                 }
             });
+        }
+    });
+});
+
+// edit comment route
+router.get('/campsites/:id/comments/:comment_id/edit', function(req, res) {
+    Comment.findById(req.params.comment_id, function(err, foundComment) {
+        if(err) {
+            console.log(err);
+            res.redirect('back');
+        } else {
+            res.render('comments/edit', {campsite_id: req.params.id, comment: foundComment});
         }
     });
 });

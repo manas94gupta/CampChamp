@@ -115,6 +115,13 @@ app.post('/campsites/:id/comments', function(req, res) {
     });
 });
 
+// Authentication routes
+
+// show register form
+app.get('/register', function(req, res) {
+    res.render('register');
+});
+
 // Serves on port 3000
 app.listen('3000', function() {
     console.log('Camp Champ serving on port 3000');

@@ -26,8 +26,15 @@ router.post('/campsites/:id/comments', isLoggedIn, function(req, res) {
                 if(err) {
                     console.log(err);
                 } else {
+                    // add author name and id to the comment
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    comment.save();
+
+                    // add comment to the campsite
                     campsite.comments.push(comment);
                     campsite.save();
+                    
                     res.redirect('/campsites/' + campsite._id);
                 }
             });

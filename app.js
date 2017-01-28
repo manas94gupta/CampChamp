@@ -84,7 +84,7 @@ app.get('/campsites/:id', function(req, res) {
 });
 
 //  Add new comments to a campsite
-app.get('/campsites/:id/comments/new', function(req, res) {
+app.get('/campsites/:id/comments/new', isLoggedIn, function(req, res) {
     // find camp site by id
     Campsite.findById(req.params.id, function(err, campsite) {
         if(err) {
@@ -96,7 +96,7 @@ app.get('/campsites/:id/comments/new', function(req, res) {
 });
 
 // post request to add comment
-app.post('/campsites/:id/comments', function(req, res) {
+app.post('/campsites/:id/comments', isLoggedIn, function(req, res) {
     // find camp site by id
     Campsite.findById(req.params.id, function(err, campsite) {
         if(err) {
@@ -155,6 +155,14 @@ app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/campsites');
 });
+
+// check if user is logged in
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
 
 // Serves on port 3000
 app.listen('3000', function() {

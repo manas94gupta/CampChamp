@@ -1,0 +1,46 @@
+body {
+    /*margin-top: 50px;*/
+    color: white;
+    background: url('../images/camp1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    transition: background 1.5s linear;
+}
+
+.navbar {
+    background: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 48px;
+}
+
+h1,
+h3 {
+    text-shadow: 0 4px 3px rgba(0,0,0,0.4), 0 8px 13px rgba(0,0,0,0.1), 0 18px 23px rgba(0,0,0,0.1);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+hr {
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgb(0,0,0);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}

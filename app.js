@@ -4,18 +4,31 @@ var express = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport'),
     localPassport = require('passport-local'),
+    expressSession = require('express-session'),
     Campsite = require('./models/campsite'),
     Comment = require('./models/comment'),
     User = require('./models/user'),
     seedDB = require('./seeds');
 
+// connect to the database
 mongoose.connect('mongodb://localhost/camp_champ');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
-
 seedDB();
+
+// Authentication and passport configuration
+app.use(expressSession({
+    secret: 'I am Batman',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localPassport(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // landing page route
 app.get('/', function(req, res) {

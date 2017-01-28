@@ -79,6 +79,18 @@ router.put('/campsites/:id', function(req, res) {
     });
 });
 
+// delete request to destroy a campsite
+router.delete('/campsites/:id', function(req, res) {
+    Campsite.findByIdAndRemove(req.param.id, function(err) {
+        if(err) {
+            console.log(err);
+            res.redirect('/campsites');
+        } else {
+            res.redirect('/campsites');
+        }
+    });
+});
+
 // check if user is logged in
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {

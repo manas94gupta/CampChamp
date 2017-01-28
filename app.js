@@ -53,7 +53,9 @@ app.use(indexRoutes);
 app.use(campsiteRoutes);
 app.use(commentRoutes);
 
+// if heroku then let it set port else port be 3000
+var port = process.env.PORT || 3000;
 // Serves on port 3000
-app.listen('3000', function() {
-    console.log('Camp Champ serving on port 3000');
+app.listen(port, function() {
+    console.log('Camp Champ serving on http://localhost:' + port);
 });

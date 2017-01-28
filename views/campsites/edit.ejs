@@ -5,15 +5,15 @@
         <h1 style="text-align:center;">Edit <%= campsite.name %></h1>
         <div style="width:30%; margin:35px auto;">
             <!-- form for editing a campsite -->
-            <form action="/campsites/<%= campsite._id %>/edit?_method=PUT" method="post">
+            <form action="/campsites/<%= campsite._id %>?_method=PUT" method="post">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="name" value="<%= campsite.name %>">
+                    <input class="form-control" type="text" name="campsite[name]" value="<%= campsite.name %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="image" value="<%= campsite.image %>">
+                    <input class="form-control" type="text" name="campsite[image]" value="<%= campsite.image %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="description" value="<%= campsite.description %>">
+                    <input class="form-control" type="text" name="campsite[description]" value="<%= campsite.description %>">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-lg btn-block">Submit!</button>

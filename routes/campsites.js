@@ -54,7 +54,7 @@ router.get('/campsites/:id', function(req, res) {
     });
 });
 
-// edit camp site route
+// edit campsite route
 router.get('/campsites/:id/edit', function(req, res) {
     Campsite.findById(req.params.id, function(err, foundCampsite) {
         if(err) {
@@ -62,6 +62,19 @@ router.get('/campsites/:id/edit', function(req, res) {
             res.redirect('/campsites');
         } else {
             res.render('campsites/edit', {campsite: foundCampsite});
+        }
+    });
+});
+
+// put request to update campsite
+router.put('/campsites/:id', function(req, res) {
+    // find by id and update
+    Campsite.findByIdAndUpdate(req.params.id, req.body.campsite, function(err, updatedCampsite) {
+        if(err) {
+            console.log(err);
+            res.redirect('/campsites');
+        } else {
+            res.redirect('/campsites/' + req.params.id);
         }
     });
 });

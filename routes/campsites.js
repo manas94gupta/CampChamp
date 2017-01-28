@@ -89,7 +89,7 @@ router.put('/campsites/:id', middleware.checkCampsiteOwnership, function(req, re
 
 // delete request to destroy a campsite
 router.delete('/campsites/:id', middleware.checkCampsiteOwnership, function(req, res) {
-    Campsite.findByIdAndRemove(req.param.id, function(err) {
+    Campsite.findByIdAndRemove(req.params.id, function(err) {
         if(err) {
             // console.log(err);
             req.flash('error', 'Something went wrong. Try again later.');

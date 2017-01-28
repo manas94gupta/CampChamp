@@ -30,6 +30,12 @@ passport.use(new localPassport(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// middleware method to pass current user in all the routes
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
+
 // landing page route
 app.get('/', function(req, res) {
     res.render('index');

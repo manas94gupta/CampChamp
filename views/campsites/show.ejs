@@ -15,12 +15,15 @@
                 <img class="img-responsive" src="<%= campsite.image %>" alt="Camp Site Image" />
                 <div class="caption-full">
                     <h4 class="pull-right">Rs.800/night</h4>
-                    <h2><a href="#"><%= campsite.name %></a></h2>
+                    <h4><a href="#"><%= campsite.name %></a></h4>
                     <p><%= campsite.description %></p>
                     <p>
                         <em>Submitted By <%= campsite.author.username %></em>
                     </p>
-                    <a class="btn btn-warning" href="/campsites/<%= campsite._id %>/edit">Edit Campsite</a>
+                    <a class="btn btn-xs btn-warning" href="/campsites/<%= campsite._id %>/edit">Edit</a>
+                    <form id="delete-form" action="/campsites/<%= campsite._id %>?_method=DELETE" method="post">
+                        <button class="btn btn-xs btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
             <div class="well">

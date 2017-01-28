@@ -149,6 +149,13 @@ app.post('/login', passport.authenticate('local',
 }), function(req, res) {
 });
 
+// logout route
+app.get('/logout', function(req, res) {
+    // passport method
+    req.logout();
+    res.redirect('/campsites');
+});
+
 // Serves on port 3000
 app.listen('3000', function() {
     console.log('Camp Champ serving on port 3000');

@@ -53,8 +53,13 @@ app.get('/campsites', function(req, res) {
     });
 });
 
+// Add new campsites route
+app.get('/campsites/new', isLoggedIn, function(req, res) {
+    res.render('campsites/addcamp');
+});
+
 // post request to add new campsites
-app.post('/campsites', function(req, res) {
+app.post('/campsites', isLoggedIn, function(req, res) {
     // get form data
     var name = req.body.name;
     var image = req.body.image;
@@ -69,11 +74,6 @@ app.post('/campsites', function(req, res) {
             res.redirect('/campsites');
         }
     });
-});
-
-// Add new campsites route
-app.get('/campsites/new', function(req, res) {
-    res.render('campsites/addcamp');
 });
 
 // Show info about the selected campsite

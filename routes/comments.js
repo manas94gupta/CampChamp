@@ -56,12 +56,26 @@ router.get('/campsites/:id/comments/:comment_id/edit', function(req, res) {
 
 // put request to edit comment
 router.put('/campsites/:id/comments/:comment_id', function(req, res) {
+    // find by id and update
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment) {
         if(err) {
             console.log(err);
             res.redirect('back');
         } else {
             res.redirect('/campsites/' + req.params.id);
+        }
+    });
+});
+
+// delete request to destroy a comment
+router.delete('/campsites/:id/comments/:comment_id', function(req, res) {
+    // find by id and remove
+    Comment.findByIdAndRemove(req.params.comment_id, function(err) {
+        if(err) {
+            console.log(err);
+            res.redirect('back');
+        } else {
+            res.redirect('back');
         }
     });
 });

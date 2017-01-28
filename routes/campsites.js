@@ -25,7 +25,11 @@ router.post('/campsites', isLoggedIn, function(req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var desc = req.body.description;
-    var newCampsite = {name: name, image: image, description: desc};
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    var newCampsite = {name: name, image: image, description: desc, author: author};
     // create new campsite and to database
     Campsite.create(newCampsite, function(err, campsite) {
         if(err) {

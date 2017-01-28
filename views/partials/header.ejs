@@ -25,8 +25,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <% if(!currentUser) { %>
-                            <li><a href="/login"><span class="glyphicon glyphicon-log-in"> Login</a></li>
-                            <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a href="/login"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
+                            <li><a href="/register"><span class="glyphicon glyphicon-user"> SignUp</span></a></li>
                         <% } else { %>
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> <%= currentUser.username %></a></li>
                             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"> Logout</a></li>

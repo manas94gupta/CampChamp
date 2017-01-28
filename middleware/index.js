@@ -23,8 +23,7 @@ var middlewareObj = {
         } else {
             res.redirect('back');
         }
-    }
-
+    },
     // check if user has created the comment
     checkCommentOwnership: function(req, res, next) {
         if(req.isAuthenticated()) {
@@ -44,8 +43,7 @@ var middlewareObj = {
         } else {
             res.redirect('back');
         }
-    }
-
+    },
     // check if user is logged in
     isLoggedIn: function(req, res, next) {
         if(req.isAuthenticated()) {
@@ -53,5 +51,6 @@ var middlewareObj = {
         }
         res.redirect('/login');
     }
+}
 
 module.exports = middlewareObj;

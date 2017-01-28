@@ -122,6 +122,20 @@ app.get('/register', function(req, res) {
     res.render('register');
 });
 
+// post request to register user
+app.post('/register', function(req, res) {
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user) {
+        if(err) {
+            console.log(err);
+            return res.render('register');
+        }
+        passport.authenticate('local')(req, res, function() {
+            res.redirect('/campsites');
+        });
+    });
+});
+
 // Serves on port 3000
 app.listen('3000', function() {
     console.log('Camp Champ serving on port 3000');

@@ -2,8 +2,11 @@ var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    Campsite = require('./models/campsite');
-    Comment = require('./models/comment');
+    passport = require('passport'),
+    localPassport = require('passport-local'),
+    Campsite = require('./models/campsite'),
+    Comment = require('./models/comment'),
+    User = require('./models/user'),
     seedDB = require('./seeds');
 
 mongoose.connect('mongodb://localhost/camp_champ');

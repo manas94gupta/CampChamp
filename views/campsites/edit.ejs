@@ -7,13 +7,13 @@
             <!-- form for editing a campsite -->
             <form action="/campsites/<%= campsite._id %>/edit?_method=PUT" method="post">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="Name">
+                    <input class="form-control" type="text" name="name" value="<%= campsite.name %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="image" placeholder="Image URL">
+                    <input class="form-control" type="text" name="image" value="<%= campsite.image %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="description" placeholder="Description">
+                    <input class="form-control" type="text" name="description" value="<%= campsite.description %>">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-lg btn-block">Submit!</button>

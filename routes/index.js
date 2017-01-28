@@ -25,7 +25,7 @@ router.post('/register', function(req, res) {
             return res.render('register');
         }
         passport.authenticate('local')(req, res, function() {
-            req.flash('success', 'Welcome to CampChamp' + user.username);
+            req.flash('success', 'Welcome to CampChamp ' + user.username);
             res.redirect('/campsites');
         });
     });
